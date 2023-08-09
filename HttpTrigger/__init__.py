@@ -9,7 +9,7 @@ import azure.cosmos as cosmos_client
 channel_secret = os.getenv('LINE_CHANNEL_SECRET', None)
 channel_access_token = os.getenv('LINE_CHANNEL_ACCESS_TOKEN', None)
 openai.api_type = "azure"
-openai.api_version = "2023-05-15"
+openai.api_version = os.getenv('AOAI_API_VERSION', None)
 openai.api_base = os.getenv('AOAI_BASE', None)
 openai.api_key = os.getenv('AOAI_APIKEY', None) 
 cosmos_uri = os.getenv('COSMOS_URI', None)
