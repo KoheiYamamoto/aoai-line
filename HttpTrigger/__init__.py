@@ -12,6 +12,7 @@ openai.api_type = "azure"
 openai.api_version = os.getenv('AOAI_API_VERSION', None)
 openai.api_base = os.getenv('AOAI_BASE', None)
 openai.api_key = os.getenv('AOAI_APIKEY', None) 
+deployment_name = os.getenv('AOAI_DEPLOYMENT', None)
 cosmos_uri = os.getenv('COSMOS_URI', None)
 cosmos_key = os.getenv('COSMOS_KEY', None)
 cosmos_db_name = 'Test'
@@ -23,7 +24,7 @@ handler = WebhookHandler(channel_secret)
 
 def chatGPT(input_txt):
     response = openai.ChatCompletion.create(
-        engine="gpt-35-turbo", # engine = "deployment_name"
+        engine=deployment_name,
         messages = [
             {"role":"system","content":"あなたは友達と話すような返答を行ってください。\n構文の特徴は以下の通りです。\n- 一切、敬語を使わない\n- タメ口で話す\n- 適度に絵文字を使う\n- 250文字を超えてはいけない"},
             {"role":"user","content":"明日何しようかな"},
